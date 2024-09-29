@@ -1,15 +1,15 @@
 import type { Metadata } from 'next'
 import localFont from 'next/font/local'
-import './globals.css'
+import './styles/globals.css'
 import { SimpleHeader } from '@/components/SimpleHeader'
 
 const geistSans = localFont({
-	src: './fonts/GeistVF.woff',
+	src: './styles/fonts/GeistVF.woff',
 	variable: '--font-geist-sans',
 	weight: '100 900'
 })
 const geistMono = localFont({
-	src: './fonts/GeistMonoVF.woff',
+	src: './styles/fonts/GeistMonoVF.woff',
 	variable: '--font-geist-mono',
 	weight: '100 900'
 })
@@ -26,6 +26,11 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang='en'>
+			<link
+				rel='icon'
+				type='image/svg+xml'
+				href='https://qualitaet-ist-mehrwert.de/wp-content/uploads/microsoft-to-do-365-logo.png'
+			/>
 			<body
 				className={`${geistSans.variable} ${geistMono.variable} antialiased`}
 			>

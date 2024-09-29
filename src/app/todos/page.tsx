@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 interface Todos {
 	todos: Todo[]
 }
@@ -18,6 +20,7 @@ export default async function Todos() {
 	const todos = await getTodos()
 	return (
 		<div className='mt-[70px] p-3 flex flex-col items-center'>
+			<Link href={'/todos/aboba'}>aboba</Link>
 			<section>
 				{todos.todos.map(todo => (
 					<article className='flex flex-row gap-2 justify-center' key={todo.id}>

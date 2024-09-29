@@ -1,6 +1,10 @@
+'use client'
+import clsx from 'clsx'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 export function SimpleHeader() {
+	const path = usePathname()
 	return (
 		<header className='bg-gray-900 py-4 fixed w-full top-0'>
 			<div className='mx-auto px-4'>
@@ -10,17 +14,41 @@ export function SimpleHeader() {
 					</Link>
 
 					<ul className='flex space-x-4'>
-						<Link className='text-white hover:text-blue-300' href='/'>
+						<Link
+							className={clsx(
+								'text-white hover:text-blue-300' +
+									(path === '/' ? ' text-blue-400' : '')
+							)}
+							href='/'
+						>
 							Home
 						</Link>
 
-						<Link className='text-white hover:text-blue-300' href='/todos'>
+						<Link
+							className={clsx(
+								'text-white hover:text-blue-300' +
+									(path === '/todos' ? ' text-blue-400' : '')
+							)}
+							href='/todos'
+						>
 							Todos
 						</Link>
-						<Link className='text-white hover:text-blue-300' href='/about'>
+						<Link
+							className={clsx(
+								'text-white hover:text-blue-300' +
+									(path === '/about' ? ' text-blue-400' : '')
+							)}
+							href='/about'
+						>
 							About
 						</Link>
-						<Link className='text-white hover:text-blue-300' href='/services'>
+						<Link
+							className={clsx(
+								'text-white hover:text-blue-300' +
+									(path === '/services' ? ' text-blue-400' : '')
+							)}
+							href='/services'
+						>
 							Services
 						</Link>
 					</ul>
