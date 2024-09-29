@@ -1,10 +1,11 @@
 import Link from 'next/link'
 
-export default function notFound() {
+const notFound = () => {
 	return (
-		<div className='mt-20 flex items-center flex-col'>
+		<div className='w-full h-screen flex flex-col items-center justify-center'>
 			<p>not found page</p>
 			<Link href={'/'}>go home</Link>
 		</div>
 	)
 }
+export default notFound

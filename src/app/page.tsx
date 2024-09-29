@@ -1,4 +1,10 @@
-import { ReadingProgress } from '@/components/ReadingProgress'
+import dynamic from 'next/dynamic'
+import Loading from '@/components/Loading'
+
+const HomePage = dynamic(() => import('./../components/HomePage'), {
+	loading: () => <Loading />,
+	ssr: true
+})
 
 interface Post {
 	id: number
@@ -9,36 +15,28 @@ interface Post {
 	views: number
 	userId: number
 }
-interface Posts {
+
+export interface Posts {
 	posts: Post[]
 	total: number
 	skip: number
 	limit: number
 }
+
 async function getPosts(): Promise<Posts> {
-	const res = await fetch('https://dummyjson.com/posts')
+	const res = await fetch('https://dummyjson.com/posts', {
+		next: { revalidate: 60 }
+	})
 	if (!res.ok) {
 		throw new Error('Failed to fetch data')
 	}
 	return res.json()
 }
 
-export default async function Home() {
+const Home = async () => {
 	const data = await getPosts()
-	return (
-		<main className='mt-12 p-3'>
-			<ReadingProgress />
-			<section className='grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3'>
-				{data.posts.map(post => (
-					<article
-						key={post.id}
-						className='flex flex-col items-center justify-center'
-					>
-						<h2 className='my-4 text-2xl'>{post.title}</h2>
-						<p>{post.body}</p>
-					</article>
-				))}
-			</section>
-		</main>
-	)
+
+	return <HomePage data={data} />
 }
+
+export default Home

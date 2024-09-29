@@ -3,7 +3,7 @@ import clsx from 'clsx'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
-export function SimpleHeader() {
+const SimpleHeader = () => {
 	const path = usePathname()
 	return (
 		<header className='bg-gray-900 py-4 fixed w-full top-0'>
@@ -57,3 +57,4 @@ export function SimpleHeader() {
 		</header>
 	)
 }
+export default SimpleHeader

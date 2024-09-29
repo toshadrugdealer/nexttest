@@ -1,7 +1,7 @@
 'use client'
 import { useReadingProgressBar } from '@/hooks/useReadingProgressBar'
 import { Progress } from 'antd'
-export const ReadingProgress = () => {
+const ReadingProgress = () => {
 	const completion = useReadingProgressBar()
 	return (
 		<div className='fixed w-full left-0 top-[54px]'>
@@ -9,3 +9,4 @@ export const ReadingProgress = () => {
 		</div>
 	)
 }
+export default ReadingProgress
